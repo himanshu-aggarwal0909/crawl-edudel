@@ -1,3 +1,5 @@
+import csv
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -13,6 +15,7 @@ def open_file():                # Function to open the file that containn the vi
         url="http://www.edudel.nic.in/mis/schoolplant/frmSchoolInformation.aspx?Schoolid="+eachcell[2].string    #url for each school information page
         visit_each_school_info_page(url)
 
+
 def visit_each_school_info_page(url):
     school_info=[]
     response=requests.get(url)
@@ -24,7 +27,10 @@ def visit_each_school_info_page(url):
     school_info.append(school_address.string)
     school_emailid=soup.find('span',{'id':'lblem'})
     school_info.append(school_emailid.string)
-    print(school_info)
+    with open("school_info.csv",'a',newline="") as sourcefile:
+        sourcefilewriter=csv.writer(sourcefile)
+        sourcefilewriter.writerow(school_info)
+        print(school_info)
 
 
 
