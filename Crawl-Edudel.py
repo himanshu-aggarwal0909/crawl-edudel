@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 
 def open_file():                # Function to open the file that containn the view page source for  url = http://www.edudel.nic.in/mis/schoolplant/frmDistrictAndSchoolInformation.aspx after selecting school
-    fr=open("C:\\Users\\hp\\Desktop\\crawl-Edudel\\PageSource.txt",'r')
+    fr=open("PageSource.txt",'r')
     content=fr.read()
     txt=content.encode('utf-8')      #convert the string to bytes
     soup=BeautifulSoup(txt,"html.parser")
